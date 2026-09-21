@@ -1,0 +1,21 @@
+## 1.2
+1. The public key is saved in a remote server and acts as the lock whereas the private key should be kept confidential and is stored locally on my system. The private key acts as my authentication proof. 
+2. Because ~/.ssh/id_ed25519 is my private key so it should only have read and write for JUST me. 644 would allow anyone to read and write my private key
+
+## 2.3
+3. git-add incrementally adds changes to the index before using the commit command. The staging area is an intermediate space to preview your work before running the commit command to include changes in the next snapshot. 
+4. A commit hash or SHA-1? It is a unique identifier for each commit/snapshot tracking who made changes, what changed, and when.
+
+## 3.2
+5. Links the local (my PC) git repository to the remote reposity (url). Origin is the deafult nickname for the repository.
+6. git fetch downloads data from the remoate repsository without altering my local files while git pull downloads the data and merges it into my current snapshot.
+
+## 4.4
+7. Head marks the start of the conflict block
+8. The branch is essentially a sandbox to experiment with without risking the current version I already have created. 
+
+## 5.1
+9. git should be used for source code not data
+10. gitignore works on untracked files with gir rm --cached works on already-tracked files. gitignore prevents future tracking and cached removes current tracking.
+
+ 

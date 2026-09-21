@@ -1,0 +1,73 @@
+## 1.1
+1. The shebang line (.sh) tells the system which interpreter should run the script. The env program searches for my path for bash and runs whichever one it finds first.
+2. chmod +x adds execute permission to a file. I think without it I would get a permission denied error.
+3. ./hello_researcher.sh runs the file as an indepdent executable. With bash, it explicitly tells bash to interpret and run the file's contents, regardkess if whether or not the permission is set. bash bypasses permissions by naming the interpreter (bash)
+
+## 1.2 
+Researcher: hjdca
+Date: 2026-09-15
+Dataset: otb_fossils.tsv
+Row count: 1243
+
+## 1.3
+1. The pathname of the script itself. 
+2. The number of arguments passed on the command line BUT not counting 0.
+3. It stops the script right away and sets its exit satus to 1. Exit status of 0 means success and anything else means failure. $?
+
+## 2.3
+1. The syntax is arithmetic expansion, the shells way of doing math. The command is basically its the current value of errors, adds 1, and the whole expression evalutes to that new number. Just the scripts way of adding up errors, so when/if a line fails this line will increase the counter by one and then it will numerically show how many problems were found.
+2. Any nonzero value means that a script failed. 0 means success. 
+3. Expected columns: 5
+---
+FAIL: header has 30 columns (expected 5)
+INFO: 1242 data rows (plus 1 header)
+FAIL: 1244 row(s) have wrong column count
+      First 5 offending line numbers:
+  Line 1 has 30 columns
+  Line 2 has 30 columns
+  Line 3 has 30 columns
+  Line 4 has 30 columns
+  Line 5 has 30 columns
+---
+RESULT: FAILED (2 errors)
+4. Expected columns: 5
+---
+FAIL: header has 30 columns (expected 5)
+INFO: 1242 data rows (plus 1 header)
+FAIL: 1244 row(s) have wrong column count
+      First 5 offending line numbers:
+  Line 1 has 30 columns
+  Line 2 has 30 columns
+  Line 3 has 30 columns
+  Line 4 has 30 columns
+  Line 5 has 30 columns
+      First bad row is in file: /home/hjdca/comp_paleo/part1_OS/week03/otb_fossils.tsv (line 1)
+---
+RESULT: FAILED (2 errors)
+
+## 3.1
+1. Instead of having to type out the formation names directly in the script, the script should automatically do that. Imagine having a numch more sites! I asked Claude the easiest way to do this and it gave me: 
+FORMATIONS=$(tail -n +2 "$FILEPATH" | awk -F'\t' -v f="$FORMATION_COL" '{print $f}' | sort -u)
+
+for FORMATION in $FORMATIONS; do
+    ...
+done
+When I ran it it worked!
+
+## 3.2
+1. Redirects error messagers to a "blackhole"/temp file and then discards them.
+2. It simply says No TSV files found in: /home/hjdca/comp_paleo/part1_OS/week04
+3. Filename                                 Rows   Columns
+--------                                 ----   -------
+eppe_fossils.tsv                        13716        31
+otb_fossils.tsv                          1242        30
+specimens_summary.tsv                    1243         3
+specimens_summary_short.tsv              1243         3
+
+## 3.3
+1. IFS = Internal Field Separator which means its the variable that rells read where to split each line into separate fields. The specific script sets it to tab character (to match TSV), then the line gets split into catalog numbers and then everything else. 
+2. Checks if catalog number does NOT start with $PREFIX. [[]] supports pattern matching directly while one set of brackers does not.
+3. tee reads the input, -a appends (overwrites). Simple redirection can only send outputs to teh file not also printed to the screen while tee does both.
+4. Any variable set inside a while loop fed by a pipe get thrown out ince the loop finishes. Process substituion fixes this by feeding the loop's input though a better redirection instead of a pipe. lastpipe is a bash option that tells bash to run the last command in a pipeline in the current shell instead of a subshell. 
+
+
