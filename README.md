@@ -20,7 +20,7 @@ Important tools: awk, sed, grep, sort
 Input: Prints the row count, column count, and header field names for the given TSV file
 ./dataset_info.sh ~/comp_paleo/part1_OS/week03/otb_fossils.tsv
 
-## Output:   
+## Output    
 
 =====================================
 File:    otb_fossils.tsv
@@ -62,8 +62,9 @@ Header fields:
 ## Input: Checks that every row in the file has expected number of columns and then reports PASS/FAIL for each check
 ./validate_tsv.sh ~/comp_paleo/part1_OS/week03/otb_fossils.tsv 30
 
-## Output:
-Validating: /home/hjdca/comp_paleo/part1_OS/week03/otb_fossils.tsv
+## Output:  
+Validating: 
+/home/hjdca/comp_paleo/part1_OS/week03/otb_fossils.tsv
 Expected columns: 30
 ---
 PASS: header has 30 columns
