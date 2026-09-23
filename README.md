@@ -20,7 +20,7 @@ Important tools: awk, sed, grep, sort
 Input: Prints the row count, column count, and header field names for the given TSV file
 ./dataset_info.sh ~/comp_paleo/part1_OS/week03/otb_fossils.tsv
 
-## Output:
+## Output:  
 =====================================
 File:    otb_fossils.tsv
 Rows:    1242 (excluding header)
