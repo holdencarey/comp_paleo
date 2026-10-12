@@ -38,10 +38,9 @@ ORDER BY n DESC;
 -- earliest_chronometric_age > 3.0, ordered by age descending.
 -- This requires joining fossils to both taxa and localities.
 -- Joins fossils to both taxa and localities and filters >3MYA by oldest first. Shows which taxa and formations make up the Pliocene record.
-SELECT f.catalog_number, t.scientific_name,
-       f.earliest_chronometric_age, l.formation
+SELECT f.catalog_number, t.scientific_name, f.earliest_chronometric_age, l.formation
 FROM fossils f
-JOIN taxa t       ON f.taxon_id    = t.taxon_id
+JOIN taxa t ON f.taxon_id = t.taxon_id
 JOIN localities l ON f.locality_id = l.locality_id
 WHERE f.earliest_chronometric_age > 3.0
 ORDER BY f.earliest_chronometric_age DESC;
