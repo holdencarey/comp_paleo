@@ -30,8 +30,8 @@ The purpose of the Tiputini Mammalian Database is to record information on mamma
 | observers | Researchers exist independently of the records they collect and record many sightings and events; they are a different subject from community members, with different attributes | name, affiliation |
 | deployments | A camera trap placement exists before and independently of any detection, and one deployment produces many detections; storing its location once means every detection can be mapped without repeating coordinates | camera_id, start_date |
 | camera_detections | Each video record is a distinct observation with its own date, time, and count; it is a different kind of record from a direct sighting, with attributes that only apply to camera data | video_id, detection_time |
-| occurrences | Each direct sighting by a researcher is a distinct observation with its own date, time, and location, independent of any camera or human activity event | obs_date, obs_time |
-| events | A human activity (hunting, fishing, pets, sighting, pursuit) exists as one occasion regardless of how many people or species were involved, so it needs its own row rather than being repeated per species or per person | event_type, event_date |
+| occurrences | Sightings from both camera detections and events | obs_date, obs_time |
+| events | A human activity (e.g. hunting, fishing, pets, sighting, pursuit) exists as one occasion regardless of how many people or species were involved, so it needs its own row rather than being repeated per species or per person | event_type, event_date |
 
 The two junction tables, `event_taxa` and `event_persons`, exist only to resolve the many-to-many relationships between events and taxa, and between events and people.
 
