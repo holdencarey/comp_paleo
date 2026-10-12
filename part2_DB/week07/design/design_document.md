@@ -1,7 +1,11 @@
 # Tiputini Mammalian Database - Preliminary Design Project
+
 **Author:** Holden Carey
+
 **Date:** October 12 2026
+
 **Domain:** Ecology, Primatology, Anthropology
+
 **Research context:** The Tiputini Mammalian Database aims to describe the mammalian and indigenous communities in order to understand the ecosystem at large.
 
 ---
@@ -34,7 +38,7 @@ The two junction tables, `event_taxa` and `event_persons`, exist only to resolve
 ## Field Specifications
 
 ### Table: taxa
-Each mammal taxon recorded at TBS, including *Homo sapiens*.
+Each mammal taxon recorded at TBS.
 
 | Field name | Data type | Required | Default | Notes |
 |------------|-----------|----------|---------|-------|
@@ -76,7 +80,7 @@ Each placement of a camera trap at a location for a period of time.
 | end_date | TEXT | NO | — | Date the camera was retrieved, YYYY-MM-DD; NULL means still deployed |
 
 ### Table: camera_detections
-Each video in which a mammal (including humans) was identified.
+Each video in which a mammal was identified.
 
 | Field name | Data type | Required | Default | Notes |
 |------------|-----------|----------|---------|-------|
@@ -89,7 +93,7 @@ Each video in which a mammal (including humans) was identified.
 | number_of_individuals | INTEGER | NO | 1 | Count of individuals visible; default 1 as at least one animal triggered the camera |
 
 ### Table: occurrences
-Each direct sighting of a mammal by a researcher.
+Sighting of mammal.
 
 | Field name | Data type | Required | Default | Notes |
 |------------|-----------|----------|---------|-------|
