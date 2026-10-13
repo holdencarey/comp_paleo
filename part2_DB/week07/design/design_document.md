@@ -33,7 +33,6 @@ The purpose of the Tiputini Mammalian Database is to record information on mamma
 | occurrences | Sightings from both camera detections and events | obs_date, obs_time |
 | events | A human activity (e.g. hunting, fishing, pets, sighting, pursuit) exists as one occasion regardless of how many people or species were involved, so it needs its own row rather than being repeated per species or per person | event_type, event_date |
 
-The two junction tables, `event_taxa` and `event_persons`, exist only to resolve the many-to-many relationships between events and taxa, and between events and people.
 
 ## Field Specifications
 
