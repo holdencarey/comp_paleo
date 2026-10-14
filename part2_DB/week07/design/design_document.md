@@ -122,8 +122,8 @@ Junction table linking each event to the species involved in it.
 
 | Field name | Data type | Required | Default | Notes |
 |------------|-----------|----------|---------|-------|
-| event_id | INTEGER | YES (PK, FK) | — | References events.event_id; part of composite primary key |
-| taxon_id | INTEGER | YES (PK, FK) | — | References taxa.taxon_id; part of composite primary key |
+| event_id | INTEGER | YES (FK) | — | References events.event_id; part of composite primary key |
+| taxon_id | INTEGER | YES (FK) | — | References taxa.taxon_id; part of composite primary key |
 | outcome | TEXT | NO | — | Controlled vocabulary: seen, pursued, killed; NULL if not recorded |
 
 ### Table: event_persons
@@ -131,8 +131,8 @@ Junction table linking each event to the community members who took part.
 
 | Field name | Data type | Required | Default | Notes |
 |------------|-----------|----------|---------|-------|
-| event_id | INTEGER | YES (PK, FK) | — | References events.event_id; part of composite primary key |
-| person_id | INTEGER | YES (PK, FK) | — | References person.person_id; part of composite primary key |
+| event_id | INTEGER | YES (FK) | — | References events.event_id; part of composite primary key |
+| person_id | INTEGER | YES (FK) | — | References person.person_id; part of composite primary key |
 
 
 ---
