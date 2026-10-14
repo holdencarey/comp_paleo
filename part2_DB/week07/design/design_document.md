@@ -146,8 +146,8 @@ Junction table linking each event to the community members who took part.
 | One taxon → many occurrences | 1:∞ | occurrences.taxon_id → taxa.taxon_id |
 | One observer → many occurrences | 1:∞ | occurrences.observer_id → observers.observer_id |
 | One observer → many events | 1:∞ | events.observer_id → observers.observer_id |
-| Many events ↔ many taxa | ∞:∞ | Junction table event_taxa: event_taxa.event_id → events.event_id; event_taxa.taxon_id → taxa.taxon_id |
-| Many events ↔ many persons | ∞:∞ | Junction table event_persons: event_persons.event_id → events.event_id; event_persons.person_id → person.person_id |
+| Many events ↔ many taxa | ∞:∞ | Table event_taxa: event_taxa.event_id → events.event_id; event_taxa.taxon_id → taxa.taxon_id |
+| Many events ↔ many persons | ∞:∞ | Table event_persons: event_persons.event_id → events.event_id; event_persons.person_id → person.person_id |
 
 ---
 
