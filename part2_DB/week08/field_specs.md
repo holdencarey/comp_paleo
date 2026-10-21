@@ -1,10 +1,6 @@
-# Tiputini Mammalian Database — Field Specifications
+# Field Specifications
 
-**Author:** Holden Carey
-**Week 8, Part 1**
-**Target engine:** SQLite
-
-
+**Author:** Holden
 
 ---
 
