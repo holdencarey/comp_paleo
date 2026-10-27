@@ -1,0 +1,24 @@
+Runtime error near line 11: UNIQUE constraint failed: observers.observer_id (19)
+Runtime error near line 14: UNIQUE constraint failed: person.person_id (19)
+Runtime error near line 21: UNIQUE constraint failed: taxa.taxon_id (19)
+Runtime error near line 26: NOT NULL constraint failed: taxa.scientific_name (19)
+Runtime error near line 33: UNIQUE constraint failed: taxa.taxon_id (19)
+Runtime error near line 38: UNIQUE constraint failed: taxa.scientific_name (19)
+Runtime error near line 50: CHECK constraint failed: event_type IN ('fishing','hunting','pets','sighting','pursuit') (19)
+Runtime error near line 57: UNIQUE constraint failed: deployments.deployment_id (19)
+Runtime error near line 62: CHECK constraint failed: lat BETWEEN -1.0 AND -0.3 (19)
+Runtime error near line 69: UNIQUE constraint failed: camera_detections.detection_id (19)
+1|CAM07_0342.MP4|1
+3|CAM07_0342.MP4|1
+Runtime error near line 77: CHECK constraint failed: number_of_individuals >= 1 (19)
+Runtime error near line 89: CHECK constraint failed: end_date IS NULL OR end_date >= start_date (19)
+Runtime error near line 96: UNIQUE constraint failed: occurrences.occurrence_id (19)
+Runtime error near line 101: CHECK constraint failed: (lat IS NULL) = (long IS NULL) (19)
+Runtime error near line 108: UNIQUE constraint failed: camera_detections.detection_id (19)
+Runtime error near line 113: UNIQUE constraint failed: camera_detections.deployment_id, camera_detections.video_id, camera_detections.taxon_id (19)
+Runtime error near line 121: FOREIGN KEY constraint failed (19)
+Runtime error near line 132: FOREIGN KEY constraint failed (19)
+1
+0
+0
+0
