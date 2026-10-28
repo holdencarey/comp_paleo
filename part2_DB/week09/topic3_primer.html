@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiputini Mammalian Database</title>
+    <link rel="stylesheet" href="topic3_style.css">
+</head>
+<body>
+
+    <!-- Navigation bar: three links (placeholders until the Flask app exists) -->
+    <nav>
+        <a href="#">Home</a>
+        <a href="#detections">Camera detections</a>
+        <a href="#new-detection">Add a detection</a>
+    </nav>
+
+    <main>
+        <!-- Heading level 1: page title -->
+        <h1>Tiputini Mammalian Database</h1>
+        <p class="intro">
+            Camera trap records of mammals at Tiputini Biodiversity Station,
+            Ecuador. WIP. 
+        </p>
+
+        <!-- Heading level 2: first section -->
+        <h2 id="detections">Camera detections</h2>
+        <p>A few real records loaded from <code>RecordOfSightings.csv</code>.</p>
+
+        <!-- Table: real rows from the camera_detections, deployments and taxa tables -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Video</th>
+                    <th>Camera</th>
+                    <th>Monitor</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Species</th>
+                    <th>Common name</th>
+                    <th>Individuals</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>DSCF0101</td>
+                    <td>NWJ15</td>
+                    <td>MON03</td>
+                    <td>2026-07-14</td>
+                    <td>03:44</td>
+                    <td><em>Panthera onca</em></td>
+                    <td>Jaguar</td>
+                    <td class="number">1</td>
+                </tr>
+                <tr>
+                    <td>DSCF0007</td>
+                    <td>NWJ04</td>
+                    <td>MON19</td>
+                    <td>2026-06-07</td>
+                    <td>21:37</td>
+                    <td><em>Tapirus terrestris</em></td>
+                    <td>Lowland tapir</td>
+                    <td class="number">1</td>
+                </tr>
+                <tr>
+                    <td>DSCF0009</td>
+                    <td>NWJ09</td>
+                    <td>MON11</td>
+                    <td>2026-06-08</td>
+                    <td>11:56</td>
+                    <td><em>Speothos venaticus</em></td>
+                    <td>Bush dog</td>
+                    <td class="number">3</td>
+                </tr>
+                <tr>
+                    <td>DSCF0002</td>
+                    <td>NWJ11</td>
+                    <td>MON04</td>
+                    <td>2026-06-07</td>
+                    <td>18:45</td>
+                    <td><em>Leopardus pardalis</em></td>
+                    <td>Ocelot</td>
+                    <td class="number">1</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Heading level 2: second section -->
+        <h2 id="new-detection">Add a detection</h2>
+
+        <!-- Form: each name attribute matches a column in camera_detections -->
+        <form method="post" action="#" class="card">
+
+            <!-- Dropdown: foreign key to deployments -->
+            <label>Deployment
+                <select name="deployment_id" required>
+                    <option value="">Choose a deployment</option>
+                    <option value="19">NWJ04 at MON19 (Jun 7 – Jun 15)</option>
+                    <option value="11">NWJ09 at MON11 (Jun 7 – Jun 14)</option>
+                    <option value="4">NWJ11 at MON04 (Jun 7 – Jun 14)</option>
+                    <option value="60">NWJ15 at MON03 (Jun 28 – Jul 17)</option>
+                </select>
+            </label>
+
+            <!-- Dropdown: foreign key to taxa -->
+            <label>Species
+                <select name="taxon_id" required>
+                    <option value="">Choose a species</option>
+                    <option value="16">Speothos venaticus (Bush dog)</option>
+                    <option value="13">Dicotyles tajacu (Collared peccary)</option>
+                    <option value="26">Priodontes maximus (Giant armadillo)</option>
+                    <option value="23">Panthera onca (Jaguar)</option>
+                    <option value="6">Tapirus terrestris (Lowland tapir)</option>
+                    <option value="9">Leopardus pardalis (Ocelot)</option>
+                </select>
+            </label>
+
+            <!-- Required text field -->
+            <label>Video file
+                <input type="text" name="video_id" placeholder="e.g. DSCF0101" required>
+            </label>
+
+            <label>Date
+                <input type="date" name="detection_date" min="1994-01-01" required>
+            </label>
+
+            <label>Time (optional)
+                <input type="time" name="detection_time">
+            </label>
+
+            <label>Number of individuals
+                <input type="number" name="number_of_individuals" min="1" value="1">
+            </label>
+
+            <!-- Dropdown: foreign key to observers -->
+            <label>Identified by
+                <select name="identified_by">
+                    <option value="">Not recorded</option>
+                    <option value="3">Addy Shultz</option>
+                    <option value="2">Connor Munro</option>
+                    <option value="1">Nico Jaworski</option>
+                </select>
+            </label>
+
+            <label class="checkbox">
+                <input type="checkbox" name="needs_review" value="true">
+                Needs review
+            </label>
+
+            <label>Notes (optional)
+                <textarea name="notes" rows="3"></textarea>
+            </label>
+
+            <button type="submit">Save detection</button>
+        </form>
+    </main>
+
+</body>
+</html>
