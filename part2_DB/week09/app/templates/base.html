@@ -1,0 +1,27 @@
+<!-- templates/base.html: shared layout that every page extends -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Tiputini{% endblock %} — Tiputini Mammalian Database</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<nav>
+    <a href="{{ url_for('index') }}" class="brand">Tiputini</a>
+    <a href="{{ url_for('list_taxa') }}">Taxa</a>
+    <a href="{{ url_for('list_deployments') }}">Deployments</a>
+    <a href="{{ url_for('list_camera_detections') }}">Detections</a>
+    <a href="{{ url_for('list_observers') }}">Observers</a>
+    <a href="{{ url_for('list_occurrences') }}">Sightings</a>
+    <a href="{{ url_for('list_events') }}">Events</a>
+    <a href="{{ url_for('list_event_taxa') }}">Event taxa</a>
+    <a href="{{ url_for('list_person') }}">People</a>
+    <a href="{{ url_for('list_event_persons') }}">Event people</a>
+</nav>
+<main>
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>

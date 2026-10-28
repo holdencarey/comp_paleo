@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Add person{% endblock %}
+{% block content %}
+<h1>Add a person</h1>
+<p class="intro">Enter a pseudonym, not a real name.</p>
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+<form method="post" class="card">
+    <label>Name / pseudonym
+        <input type="text" name="name" required value="{{ form.get('name', '') }}" placeholder="e.g. Participant 01">
+    </label>
+    <label>Sex (optional)
+        <select name="sex">
+            <option value="">Not recorded</option>
+            {% for s in ['male', 'female'] %}
+            <option value="{{ s }}" {% if form.get('sex') == s %}selected{% endif %}>{{ s }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>Age (optional)
+        <input type="number" name="age" min="0" max="120" value="{{ form.get('age', '') }}">
+    </label>
+    <button type="submit">Save person</button>
+    <a href="{{ url_for('list_person') }}">Cancel</a>
+</form>
+{% endblock %}

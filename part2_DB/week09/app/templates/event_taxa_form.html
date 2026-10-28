@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Link species to event{% endblock %}
+{% block content %}
+<h1>Link a species to an event</h1>
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+<form method="post" class="card">
+    <label>Event
+        <select name="event_id" required>
+            <option value="">Choose an event</option>
+            {% for e in events %}
+            <option value="{{ e['event_id'] }}"
+                {% if form.get('event_id') == e['event_id']|string %}selected{% endif %}>
+                #{{ e['event_id'] }}: {{ e['event_type'] }} on {{ e['event_date'] }}
+            </option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>Taxon
+        <select name="taxon_id" required>
+            <option value="">Choose a taxon</option>
+            {% for t in taxa %}
+            <option value="{{ t['taxon_id'] }}"
+                {% if form.get('taxon_id') == t['taxon_id']|string %}selected{% endif %}>
+                {{ t['scientific_name'] }}{% if t['common_name'] %} ({{ t['common_name'] }}){% endif %}
+            </option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>Outcome (optional)
+        <select name="outcome">
+            <option value="">Not recorded</option>
+            {% for o in ['seen', 'pursued', 'killed'] %}
+            <option value="{{ o }}" {% if form.get('outcome') == o %}selected{% endif %}>{{ o }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <button type="submit">Save link</button>
+    <a href="{{ url_for('list_event_taxa') }}">Cancel</a>
+</form>
+{% endblock %}

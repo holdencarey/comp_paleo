@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Observers{% endblock %}
+{% block content %}
+<h1>Observers</h1>
+<a class="button" href="{{ url_for('new_observer') }}">+ Add observer</a>
+<table>
+    <thead>
+        <tr><th>ID</th><th>Name</th><th>Affiliation</th><th class="number">Videos identified</th></tr>
+    </thead>
+    <tbody>
+    {% for row in rows %}
+        <tr>
+            <td>{{ row['observer_id'] }}</td>
+            <td>{{ row['name'] }}</td>
+            <td>{{ row['affiliation'] or '—' }}</td>
+            <td class="number">{{ row['n_identified'] }}</td>
+        </tr>
+    {% else %}
+        <tr><td colspan="4">No observers yet.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

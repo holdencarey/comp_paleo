@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Deployments{% endblock %}
+{% block content %}
+<h1>Camera deployments</h1>
+<a class="button" href="{{ url_for('new_deployment') }}">+ Add deployment</a>
+<table>
+    <thead>
+        <tr><th>ID</th><th>Camera</th><th>Monitor</th><th class="number">Lat</th><th class="number">Long</th>
+            <th>Start</th><th>End</th><th class="number">Detections</th></tr>
+    </thead>
+    <tbody>
+    {% for row in rows %}
+        <tr>
+            <td>{{ row['deployment_id'] }}</td>
+            <td>{{ row['camera_id'] }}</td>
+            <td>{{ row['monitor_id'] or '—' }}</td>
+            <td class="number">{{ row['lat'] }}</td>
+            <td class="number">{{ row['long'] }}</td>
+            <td>{{ row['start_date'] }}</td>
+            <td>{{ row['end_date'] or 'still deployed' }}</td>
+            <td class="number">{{ row['n_detections'] }}</td>
+        </tr>
+    {% else %}
+        <tr><td colspan="8">No deployments yet.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

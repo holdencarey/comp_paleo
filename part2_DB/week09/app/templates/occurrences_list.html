@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Sightings{% endblock %}
+{% block content %}
+<h1>Direct sightings</h1>
+<a class="button" href="{{ url_for('new_occurrence') }}">+ Add sighting</a>
+<table>
+    <thead>
+        <tr><th>ID</th><th>Date</th><th>Time</th><th>Taxon</th><th>Common name</th>
+            <th>Observer</th><th class="number">Lat</th><th class="number">Long</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+    {% for row in rows %}
+        <tr>
+            <td>{{ row['occurrence_id'] }}</td>
+            <td>{{ row['obs_date'] }}</td>
+            <td>{{ row['obs_time'] or '—' }}</td>
+            <td><em>{{ row['scientific_name'] }}</em></td>
+            <td>{{ row['common_name'] or '—' }}</td>
+            <td>{{ row['observer'] }}</td>
+            <td class="number">{{ row['lat'] if row['lat'] is not none else '—' }}</td>
+            <td class="number">{{ row['long'] if row['long'] is not none else '—' }}</td>
+            <td>{{ row['notes'] or '' }}</td>
+        </tr>
+    {% else %}
+        <tr><td colspan="9">No sightings yet.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,200 @@
+/* app/static/style.css — Tiputini Mammalian Database
+   Based on the Topic 3 primer styles, plus rules for the Flask app */
+
+/* Whole page */
+body {
+    font-family: Georgia, serif;
+    background-color: #f6f4ec;   /* pale parchment */
+    color: #22301f;              /* dark forest green */
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Navigation bar */
+nav {
+    background-color: #2f4a2a;  /* deep canopy green */
+    padding: 0.75rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.25rem;
+    align-items: baseline;
+}
+
+nav a {
+    color: #e6eedb;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 0.95rem;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+nav .brand {
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 1.15rem;
+    margin-right: 0.75rem;
+}
+
+/* Main content area */
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 2rem 3rem;
+}
+
+h1 {
+    color: #2f4a2a;
+    margin-bottom: 0.25rem;
+}
+
+h2 {
+    color: #5a6e3a;
+    border-bottom: 2px solid #c9d3b0;
+    padding-bottom: 0.25rem;
+    margin-top: 2rem;
+}
+
+.intro {
+    font-style: italic;
+    color: #55604f;
+}
+
+/* Tables */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #ffffff;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+table.narrow {
+    width: auto;
+    min-width: 320px;
+}
+
+th, td {
+    border: 1px solid #c9d3b0;
+    padding: 0.45rem 0.7rem;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background-color: #dfe7cc;
+    position: sticky;            /* header stays visible on long lists */
+    top: 0;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f5ea;   /* striped rows */
+}
+
+tbody tr:hover {
+    background-color: #e8eed8;
+}
+
+.number {
+    text-align: right;
+}
+
+td a {
+    color: #2f4a2a;
+}
+
+/* "Needs review" tag in the detections table */
+.flag {
+    background-color: #f3dfb0;
+    color: #6b4a10;
+    border-radius: 3px;
+    padding: 0.05rem 0.4rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+/* "+ Add ..." links styled as buttons */
+a.button {
+    display: inline-block;
+    background-color: #2f4a2a;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 0.45rem 1rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.95rem;
+}
+
+a.button:hover {
+    background-color: #46693e;
+}
+
+.card a {
+    color: #55604f;
+    font-family: Arial, sans-serif;
+}
+
+/* Forms */
+.card {
+    background-color: #ffffff;
+    border: 1px solid #c9d3b0;
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    max-width: 520px;
+}
+
+label {
+    display: block;
+    margin-bottom: 1rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="number"],
+select,
+textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 0.3rem;
+    padding: 0.4rem;
+    border: 1px solid #a8b48c;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.checkbox input {
+    margin-right: 0.4rem;
+}
+
+button {
+    background-color: #2f4a2a;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-right: 1rem;
+}
+
+button:hover {
+    background-color: #46693e;
+}
+
+/* Constraint error message shown above a form */
+.error {
+    color: #8f2a1c;
+    background-color: #fbe9e5;
+    border: 1px solid #c0392b;
+    border-radius: 4px;
+    padding: 0.6rem 0.9rem;
+    max-width: 520px;
+    font-family: Arial, sans-serif;
+}

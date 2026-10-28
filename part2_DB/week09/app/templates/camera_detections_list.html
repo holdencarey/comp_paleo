@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Camera detections{% endblock %}
+{% block content %}
+<h1>Camera detections</h1>
+<p class="intro">{{ rows|length }} videos with an identified mammal, newest first.</p>
+<a class="button" href="{{ url_for('new_camera_detection') }}">+ Add detection</a>
+<table>
+    <thead>
+        <tr><th>ID</th><th>Camera</th><th>Monitor</th><th>Video</th><th>Date</th><th>Time</th>
+            <th>Taxon</th><th>Common name</th><th class="number">Count</th>
+            <th>Identified by</th><th>Review</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+    {% for row in rows %}
+        <tr>
+            <td>{{ row['detection_id'] }}</td>
+            <td>{{ row['camera_id'] }}</td>
+            <td>{{ row['monitor_id'] or '—' }}</td>
+            <td>{{ row['video_id'] }}</td>
+            <td>{{ row['detection_date'] }}</td>
+            <td>{{ row['detection_time'] or '—' }}</td>
+            <td><em>{{ row['scientific_name'] }}</em></td>
+            <td>{{ row['common_name'] or '—' }}</td>
+            <td class="number">{{ row['number_of_individuals'] }}</td>
+            <td>{{ row['identified_by'] or '—' }}</td>
+            <td>{% if row['needs_review'] %}<span class="flag">needs review</span>{% endif %}</td>
+            <td>{{ row['notes'] or '' }}</td>
+        </tr>
+    {% else %}
+        <tr><td colspan="12">No detections yet.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

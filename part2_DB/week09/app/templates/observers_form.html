@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Add observer{% endblock %}
+{% block content %}
+<h1>Add an observer</h1>
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+<form method="post" class="card">
+    <label>Name
+        <input type="text" name="name" required value="{{ form.get('name', '') }}">
+    </label>
+    <label>Affiliation (optional)
+        <input type="text" name="affiliation" value="{{ form.get('affiliation', '') }}"
+               placeholder="e.g. Primate Molecular Ecology and Evolution Lab">
+    </label>
+    <button type="submit">Save observer</button>
+    <a href="{{ url_for('list_observers') }}">Cancel</a>
+</form>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Add deployment{% endblock %}
+{% block content %}
+<h1>Add a camera deployment</h1>
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+<form method="post" class="card">
+    <label>Camera ID
+        <input type="text" name="camera_id" required value="{{ form.get('camera_id', '') }}" placeholder="e.g. NWJ04">
+    </label>
+    <label>Monitor ID (optional)
+        <input type="text" name="monitor_id" value="{{ form.get('monitor_id', '') }}" placeholder="e.g. MON19">
+    </label>
+    <label>Latitude
+        <input type="number" name="lat" step="any" required value="{{ form.get('lat', '') }}" placeholder="e.g. -0.626366">
+    </label>
+    <label>Longitude
+        <input type="number" name="long" step="any" required value="{{ form.get('long', '') }}" placeholder="e.g. -76.145433">
+    </label>
+    <label>Start date
+        <input type="date" name="start_date" required value="{{ form.get('start_date', '') }}">
+    </label>
+    <label>End date (leave blank if still deployed)
+        <input type="date" name="end_date" value="{{ form.get('end_date', '') }}">
+    </label>
+    <button type="submit">Save deployment</button>
+    <a href="{{ url_for('list_deployments') }}">Cancel</a>
+</form>
+{% endblock %}

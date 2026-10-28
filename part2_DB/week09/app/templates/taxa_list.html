@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Taxa{% endblock %}
+{% block content %}
+<h1>Taxa</h1>
+<a class="button" href="{{ url_for('new_taxon') }}">+ Add taxon</a>
+<table>
+    <thead>
+        <tr><th>ID</th><th>Scientific name</th><th>Rank</th><th>Common name</th><th class="number">Detections</th></tr>
+    </thead>
+    <tbody>
+    {% for row in rows %}
+        <tr>
+            <td>{{ row['taxon_id'] }}</td>
+            <td><em>{{ row['scientific_name'] }}</em></td>
+            <td>{{ row['taxonomic_rank'] }}</td>
+            <td>{{ row['common_name'] or '—' }}</td>
+            <td class="number">{{ row['n_detections'] }}</td>
+        </tr>
+    {% else %}
+        <tr><td colspan="5">No taxa yet.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

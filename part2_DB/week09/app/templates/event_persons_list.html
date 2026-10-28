@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Event people{% endblock %}
+{% block content %}
+<h1>People involved in events</h1>
+<a class="button" href="{{ url_for('new_event_person') }}">+ Link a person to an event</a>
+<table>
+    <thead>
+        <tr><th>Event</th><th>Type</th><th>Date</th><th>Person</th></tr>
+    </thead>
+    <tbody>
+    {% for row in rows %}
+        <tr>
+            <td>{{ row['event_id'] }}</td>
+            <td>{{ row['event_type'] }}</td>
+            <td>{{ row['event_date'] }}</td>
+            <td>{{ row['name'] }}</td>
+        </tr>
+    {% else %}
+        <tr><td colspan="4">No links yet.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

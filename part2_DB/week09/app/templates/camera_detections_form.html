@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}Add detection{% endblock %}
+{% block content %}
+<h1>Add a camera detection</h1>
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+<form method="post" class="card">
+    <label>Deployment
+        <select name="deployment_id" required>
+            <option value="">Choose a deployment</option>
+            {% for d in deployments %}
+            <option value="{{ d['deployment_id'] }}"
+                {% if form.get('deployment_id') == d['deployment_id']|string %}selected{% endif %}>
+                {{ d['camera_id'] }} at {{ d['monitor_id'] or '?' }} ({{ d['start_date'] }} to {{ d['end_date'] or 'now' }})
+            </option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>Taxon
+        <select name="taxon_id" required>
+            <option value="">Choose a taxon</option>
+            {% for t in taxa %}
+            <option value="{{ t['taxon_id'] }}"
+                {% if form.get('taxon_id') == t['taxon_id']|string %}selected{% endif %}>
+                {{ t['scientific_name'] }}{% if t['common_name'] %} ({{ t['common_name'] }}){% endif %}
+            </option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>Video file
+        <input type="text" name="video_id" required value="{{ form.get('video_id', '') }}" placeholder="e.g. DSCF0101">
+    </label>
+    <label>Date
+        <input type="date" name="detection_date" required value="{{ form.get('detection_date', '') }}">
+    </label>
+    <label>Time (optional)
+        <input type="time" name="detection_time" value="{{ form.get('detection_time', '') }}">
+    </label>
+    <label>Number of individuals
+        <input type="number" name="number_of_individuals" value="{{ form.get('number_of_individuals', '1') }}">
+    </label>
+    <label>Identified by (optional)
+        <select name="identified_by">
+            <option value="">Not recorded</option>
+            {% for o in observers %}
+            <option value="{{ o['observer_id'] }}"
+                {% if form.get('identified_by') == o['observer_id']|string %}selected{% endif %}>{{ o['name'] }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <label class="checkbox">
+        <input type="checkbox" name="needs_review" {% if form.get('needs_review') %}checked{% endif %}>
+        Needs review
+    </label>
+    <label>Notes (optional)
+        <textarea name="notes" rows="3">{{ form.get('notes', '') }}</textarea>
+    </label>
+    <button type="submit">Save detection</button>
+    <a href="{{ url_for('list_camera_detections') }}">Cancel</a>
+</form>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Add sighting{% endblock %}
+{% block content %}
+<h1>Add a direct sighting</h1>
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+<form method="post" class="card">
+    <label>Taxon
+        <select name="taxon_id" required>
+            <option value="">Choose a taxon</option>
+            {% for t in taxa %}
+            <option value="{{ t['taxon_id'] }}"
+                {% if form.get('taxon_id') == t['taxon_id']|string %}selected{% endif %}>
+                {{ t['scientific_name'] }}{% if t['common_name'] %} ({{ t['common_name'] }}){% endif %}
+            </option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>Observer
+        <select name="observer_id" required>
+            <option value="">Choose an observer</option>
+            {% for o in observers %}
+            <option value="{{ o['observer_id'] }}"
+                {% if form.get('observer_id') == o['observer_id']|string %}selected{% endif %}>{{ o['name'] }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>Date
+        <input type="date" name="obs_date" required value="{{ form.get('obs_date', '') }}">
+    </label>
+    <label>Time (optional)
+        <input type="time" name="obs_time" value="{{ form.get('obs_time', '') }}">
+    </label>
+    <label>Latitude (optional)
+        <input type="number" name="lat" step="any" value="{{ form.get('lat', '') }}">
+    </label>
+    <label>Longitude (optional)
+        <input type="number" name="long" step="any" value="{{ form.get('long', '') }}">
+    </label>
+    <label>Notes (optional)
+        <textarea name="notes" rows="3">{{ form.get('notes', '') }}</textarea>
+    </label>
+    <button type="submit">Save sighting</button>
+    <a href="{{ url_for('list_occurrences') }}">Cancel</a>
+</form>
+{% endblock %}

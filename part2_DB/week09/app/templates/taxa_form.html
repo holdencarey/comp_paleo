@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Add taxon{% endblock %}
+{% block content %}
+<h1>Add a taxon</h1>
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+<form method="post" class="card">
+    <label>Scientific name
+        <input type="text" name="scientific_name" required
+               value="{{ form.get('scientific_name', '') }}" placeholder="e.g. Panthera onca">
+    </label>
+    <label>Taxonomic rank
+        <select name="taxonomic_rank">
+            {% for rank in ['species', 'genus', 'family', 'order', 'class'] %}
+            <option value="{{ rank }}" {% if form.get('taxonomic_rank') == rank %}selected{% endif %}>{{ rank }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>Common name (optional)
+        <input type="text" name="common_name" value="{{ form.get('common_name', '') }}">
+    </label>
+    <button type="submit">Save taxon</button>
+    <a href="{{ url_for('list_taxa') }}">Cancel</a>
+</form>
+{% endblock %}

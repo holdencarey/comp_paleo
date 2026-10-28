@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<h1>Tiputini Mammalian Database</h1>
+<p class="intro">Camera trap and field records of mammals at Tiputini Biodiversity Station, Ecuador.</p>
+
+<h2>Records in the database</h2>
+<table class="narrow">
+    <thead><tr><th>Table</th><th class="number">Rows</th></tr></thead>
+    <tbody>
+        <tr><td><a href="{{ url_for('list_taxa') }}">Taxa</a></td><td class="number">{{ counts['taxa'] }}</td></tr>
+        <tr><td><a href="{{ url_for('list_deployments') }}">Deployments</a></td><td class="number">{{ counts['deployments'] }}</td></tr>
+        <tr><td><a href="{{ url_for('list_camera_detections') }}">Camera detections</a></td><td class="number">{{ counts['camera_detections'] }}</td></tr>
+        <tr><td><a href="{{ url_for('list_observers') }}">Observers</a></td><td class="number">{{ counts['observers'] }}</td></tr>
+        <tr><td><a href="{{ url_for('list_occurrences') }}">Sightings</a></td><td class="number">{{ counts['occurrences'] }}</td></tr>
+        <tr><td><a href="{{ url_for('list_events') }}">Events</a></td><td class="number">{{ counts['events'] }}</td></tr>
+        <tr><td><a href="{{ url_for('list_event_taxa') }}">Event taxa</a></td><td class="number">{{ counts['event_taxa'] }}</td></tr>
+        <tr><td><a href="{{ url_for('list_person') }}">People</a></td><td class="number">{{ counts['person'] }}</td></tr>
+        <tr><td><a href="{{ url_for('list_event_persons') }}">Event people</a></td><td class="number">{{ counts['event_persons'] }}</td></tr>
+    </tbody>
+</table>
+
+<h2>Most detected species</h2>
+<table class="narrow">
+    <thead><tr><th>Species</th><th>Common name</th><th class="number">Detections</th></tr></thead>
+    <tbody>
+    {% for row in top_species %}
+        <tr><td><em>{{ row['scientific_name'] }}</em></td><td>{{ row['common_name'] or '—' }}</td><td class="number">{{ row['n'] }}</td></tr>
+    {% else %}
+        <tr><td colspan="3">No detections yet.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

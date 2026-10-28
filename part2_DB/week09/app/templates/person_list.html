@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}People{% endblock %}
+{% block content %}
+<h1>People</h1>
+<p class="intro">Community members who take part in events. Use pseudonyms only.</p>
+<a class="button" href="{{ url_for('new_person') }}">+ Add person</a>
+<table>
+    <thead>
+        <tr><th>ID</th><th>Name / pseudonym</th><th>Sex</th><th class="number">Age</th></tr>
+    </thead>
+    <tbody>
+    {% for row in rows %}
+        <tr>
+            <td>{{ row['person_id'] }}</td>
+            <td>{{ row['name'] }}</td>
+            <td>{{ row['sex'] or '—' }}</td>
+            <td class="number">{{ row['age'] if row['age'] is not none else '—' }}</td>
+        </tr>
+    {% else %}
+        <tr><td colspan="4">No people yet.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
